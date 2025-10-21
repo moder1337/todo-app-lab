@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h2 Мій список справ
+
+  form(action="/add", method="post")
+    input(type="text", name="name", placeholder="Ввести задачу", required)
+    button(type="submit") Додати
+
+  if todoList.length === 0
+    p Список порожній
+  else
+    ul
+      each item in todoList
+        if item.done
+          li.done #{item.name}
+        else
+          li #{item.name}
